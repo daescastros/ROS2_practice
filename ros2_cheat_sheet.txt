@@ -1,0 +1,12 @@
+Packages path:
+~/Desktop/udemy_ros2/ros2_ws/src/
+Work space path: 
+~/Desktop/udemy_ros2/ros2_ws/
+
+Terminal commands:
+colcon build		|	Build env for ROS2
+colcon build --packages-select <package-name>		|	load only package-name
+Create new packages:
+ros2 pkg create my_py_pkg --build-type ament_python --dependencies rclpy	|	create python package (from ws/src/)
+os2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp	|	create cpp package (from ws/src/)
+
