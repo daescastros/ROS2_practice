@@ -5,11 +5,13 @@ from rclpy.node import Node
 class MyNode(Node):
     def __init__(self):
         super().__init__("py_test")
+        self.counter_ = 0
         self.get_logger().info("Hello ROS2!!")
-        self.create_timer(0.5) # Time in seconds. 0.5s for 2Hz
+        self.create_timer(0.5, self.timer_callback) # Time in seconds. 0.5s for 2Hz # Runs when spin node
 
     def timer_callback(self):
-        self.get_logger().info("Hello")
+        self.counter_ += 1
+        self.get_logger().info("Hello " + str(self.counter_))
 
 def main(args=None):
     rclpy.init(args=args)
