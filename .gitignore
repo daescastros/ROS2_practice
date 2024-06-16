@@ -1,6 +1,3 @@
 ros2_ws/build/
 ros2_ws/log/
-ros2_ws/log/latest_build
-ros2_ws/build/my_cpp_pkg/colcon_command_prefix_build.sh.env
-ros2_ws/build/my_py_pkg/colcon_command_prefix_setup_py.sh.env
-ros2_ws/build/my_py_pkg/prefix_override/__pycache__/sitecustomize.cpython-310.pyc
+ros2_ws/install/
