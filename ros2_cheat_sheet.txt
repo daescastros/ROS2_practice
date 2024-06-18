@@ -1,12 +1,32 @@
+OneDrive -> ROS2 Course -> ROS2 for Beginners -> Cheat Sheet
+
+
+https://onedrive.live.com/redir?resid=94DECDFA8E6E6858%2110381&page=Edit&wd=target%28Quick%20Notes.one%7Cbc665703-dde6-4982-a336-7bb358d2f9f6%2FCheat%20sheet%7C03d7a76c-f2bb-4efe-a9a5-959c4cdb3a7d%2F%29&wdorigin=NavigationUrl
+
+
+
+
+
+
+
 Packages path:
 ~/Desktop/udemy_ros2/ros2_ws/src/
 Work space path: 
 ~/Desktop/udemy_ros2/ros2_ws/
 
 Terminal commands:
-colcon build		|	Build env for ROS2
-colcon build --packages-select <package-name>		|	load only package-name
 Create new packages:
 ros2 pkg create my_py_pkg --build-type ament_python --dependencies rclpy	|	create python package (from ws/src/)
 os2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp	|	create cpp package (from ws/src/)
+RO2 use:
+colcon build		|	Build env for ROS2
+colcon build --packages-select <package-name>		|	load only package-name
+colcon build --packages-select <py-pkg> --symlink-install		|	Create link to direct py executables files to avoid building again during debug. Only for Python.
+ros2 run <package_name> <executable_name>		|	run node
+ros2 run <pkg_na> <ex_n> --ros-args --remap/-r __node:=<node_name>		|	run node with new name <node_name>
+ros2 node list		|	Mostrar nodos actualmente corriendo
+ros2 node info <node>		|	Info del nodo, si este est'a activo
+rqt -> plugins -> Introspection -> Node Graph		|	See running nodes and interactions as graph
+ros2 run turtlesim turtlesim_node		|	open sim
+
 
