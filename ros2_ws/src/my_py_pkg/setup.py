@@ -22,7 +22,8 @@ setup(
         'console_scripts': [ # excecutable = node.path:function_name
             "py_node = my_py_pkg.my_first_node:main",
             "robot_news_station = my_py_pkg.robot_news_station:main",
-            "smartphone = my_py_pkg.smartphone:main"
+            "smartphone = my_py_pkg.smartphone:main",
+            "number_publisher = my_py_pkg.z_topics_practice__number_publisher:main"
         ],
     },
 )
