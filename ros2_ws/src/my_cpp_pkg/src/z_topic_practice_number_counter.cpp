@@ -16,7 +16,7 @@ public:
 private:
     void callbackNumberCounterTask(const example_interfaces::msg::Int64::SharedPtr msg)
     {
-        
+
         count = count + msg->data;
         auto count_msg = example_interfaces::msg::Int64();
         count_msg.data = count;
