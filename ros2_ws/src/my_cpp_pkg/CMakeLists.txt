@@ -40,6 +40,9 @@ ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
 add_executable(add_two_ints_client_no_opp src/service_client_add_two_ints_client_no_oop.cpp)
 ament_target_dependencies(add_two_ints_client_no_opp rclcpp example_interfaces)
 
+add_executable(add_two_ints_client src/service_client_add_two_ints_client.cpp)
+ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
+
 install(TARGETS
   cpp_node
   robot_news_station
@@ -47,6 +50,7 @@ install(TARGETS
   number_counter
   add_two_ints_server
   add_two_ints_client_no_opp
+  add_two_ints_client
   DESTINATION lib/${PROJECT_NAME}
 )
 

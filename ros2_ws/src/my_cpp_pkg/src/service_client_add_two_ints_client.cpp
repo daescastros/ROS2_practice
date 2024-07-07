@@ -6,11 +6,39 @@ class AddTwoIntsClientNode : public rclcpp::Node
 public:
     AddTwoIntsClientNode() : Node("add_two_ints_client")
     {
-        //
+        // thread1_ = std::thread(std::bind(&AddTwoIntsClientNode::callAddTwoIntsService, this, 1, 4));
+        threads_.push_back(std::thread(std::bind(&AddTwoIntsClientNode::callAddTwoIntsService, this, 1, 4)));
+        threads_.push_back(std::thread(std::bind(&AddTwoIntsClientNode::callAddTwoIntsService, this, 3, 7)));
         RCLCPP_INFO(this->get_logger(), "Add Two Ints Client Node has been started.");
     }
 
+    void callAddTwoIntsService(int a, int b)
+    {
+        auto client = this->create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
+        while (!client->wait_for_service(std::chrono::seconds(2)))
+        {
+            RCLCPP_WARN(this->get_logger(), "Waiting for the server to be up...");
+        }
+        auto request = std::make_shared<example_interfaces::srv::AddTwoInts::Request>();
+        request->a = a;
+        request->b = b;
+        auto future = client->async_send_request(request);
+        try
+        {
+            auto response = future.get();
+            RCLCPP_INFO(this->get_logger(), "%d + %d = %d",
+                        a, b, (int)response->sum);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << '\n';
+            RCLCPP_ERROR(this->get_logger(), "Service call failed");
+        }
+    }
+
 private:
+    // std::thread thread1_;
+    std::vector<std::thread> threads_;
 };
 
 int main(int argc, char **argv)
