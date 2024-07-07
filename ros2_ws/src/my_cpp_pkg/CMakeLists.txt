@@ -34,11 +34,19 @@ ament_target_dependencies(smartphone rclcpp example_interfaces)
 add_executable(number_counter src/z_topic_practice_number_counter.cpp)
 ament_target_dependencies(number_counter rclcpp example_interfaces)
 
+add_executable(add_two_ints_server src/service_server_add_two_ints_server.cpp)
+ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
+
+add_executable(add_two_ints_client_no_opp src/service_client_add_two_ints_client_no_oop.cpp)
+ament_target_dependencies(add_two_ints_client_no_opp rclcpp example_interfaces)
+
 install(TARGETS
   cpp_node
   robot_news_station
   smartphone
   number_counter
+  add_two_ints_server
+  add_two_ints_client_no_opp
   DESTINATION lib/${PROJECT_NAME}
 )
 
