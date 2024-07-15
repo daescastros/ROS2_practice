@@ -26,7 +26,7 @@ setup(
             "number_publisher = my_py_pkg.z_topics_practice__number_publisher:main",
             "add_two_ints_server = my_py_pkg.service_server_add_two_ints_server:main",
             "add_two_ints_client_no_oop = my_py_pkg.service_client_add_two_ints_client_no_oop:main",
-            "add_two_ints_client = my_py_pkg.service_client_add_two_ints_client:main",
+            "add_two_ints_client = my_py_pkg.service_client_add_two_ints_client:main"
         ],
     },
 )
