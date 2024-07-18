@@ -27,7 +27,8 @@ setup(
             "number_counter = my_py_pkg.z_topics_practice__number_counter:main",
             "add_two_ints_server = my_py_pkg.service_server_add_two_ints_server:main",
             "add_two_ints_client_no_oop = my_py_pkg.service_client_add_two_ints_client_no_oop:main",
-            "add_two_ints_client = my_py_pkg.service_client_add_two_ints_client:main"
+            "add_two_ints_client = my_py_pkg.service_client_add_two_ints_client:main",
+            "hardware_status_publisher = my_py_pkg.custom_msg_hw_status_publisher:main"
         ],
     },
 )

@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/ros/humble/include/**"
+                "/opt/ros/humble/include/**",
+                "~/Desktop/udemy_ros2/ros2_ws/install/my_robot_interfaces/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

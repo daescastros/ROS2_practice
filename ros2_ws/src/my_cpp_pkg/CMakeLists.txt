@@ -9,18 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(example_interfaces REQUIRED)
-
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+find_package(my_robot_interfaces REQUIRED)
 
 add_executable(cpp_node src/my_first_node.cpp)
 ament_target_dependencies(cpp_node rclcpp)
@@ -43,6 +32,9 @@ ament_target_dependencies(add_two_ints_client_no_opp rclcpp example_interfaces)
 add_executable(add_two_ints_client src/service_client_add_two_ints_client.cpp)
 ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
 
+add_executable(hardware_status_publisher src/custom_msg_hw_status_publisher.cpp)
+ament_target_dependencies(hardware_status_publisher rclcpp my_robot_interfaces)
+
 install(TARGETS
   cpp_node
   robot_news_station
@@ -51,6 +43,7 @@ install(TARGETS
   add_two_ints_server
   add_two_ints_client_no_opp
   add_two_ints_client
+  hardware_status_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
