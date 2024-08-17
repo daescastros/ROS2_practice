@@ -2,7 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from example_interfaces.srv import AddTwoInts
-from functools import partial
+from functools import partial  # Add multiple variables to a called function
 
 
 class AddTwoIntsClient(Node):
