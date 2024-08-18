@@ -9,7 +9,10 @@ from example_interfaces.msg import Int64
 class NumberPublisherNode(Node):
     def __init__(self):
         super().__init__("number_publisher")
-        self.value_to_publish_ = 3
+        # Node Parameter
+        self.declare_parameter("number_to_publish",value=3)
+        
+        self.value_to_publish_ = self.get_parameter("number_to_publish").value
         self.publisher_ = self.create_publisher(Int64, "number", 10)
         self.timer_ = self.create_timer(
             1.0, self.publish_number
