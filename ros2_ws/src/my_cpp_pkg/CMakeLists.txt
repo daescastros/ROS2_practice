@@ -23,6 +23,9 @@ ament_target_dependencies(smartphone rclcpp example_interfaces)
 add_executable(number_counter src/z_topic_practice_number_counter.cpp)
 ament_target_dependencies(number_counter rclcpp example_interfaces)
 
+add_executable(number_publisher src/z_number_publisher.cpp)
+ament_target_dependencies(number_publisher rclcpp example_interfaces)
+
 add_executable(add_two_ints_server src/service_server_add_two_ints_server.cpp)
 ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
 
@@ -35,11 +38,13 @@ ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
 add_executable(hardware_status_publisher src/custom_msg_hw_status_publisher.cpp)
 ament_target_dependencies(hardware_status_publisher rclcpp my_robot_interfaces)
 
+
 install(TARGETS
   cpp_node
   robot_news_station
   smartphone
   number_counter
+  number_publisher
   add_two_ints_server
   add_two_ints_client_no_opp
   add_two_ints_client
