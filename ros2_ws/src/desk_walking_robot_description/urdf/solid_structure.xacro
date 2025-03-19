@@ -36,10 +36,10 @@
         </link>
     </xacro:macro>
 
-    <xacro:pivot_link prefix="right_hip" rpy="0 1.57 0" />
-    <xacro:pivot_link prefix="left_hip" rpy="0 1.57 0" />
-    <xacro:pivot_link prefix="right_ankle" rpy="1.57 0 0" />
-    <xacro:pivot_link prefix="left_ankle" rpy="1.57 0 0" />
+    <xacro:pivot_link prefix="right_hip" rpy="0 ${pi/2.0} 0" />
+    <xacro:pivot_link prefix="left_hip" rpy="0 ${pi/2.0} 0" />
+    <xacro:pivot_link prefix="right_ankle" rpy="${pi/2.0} 0 0" />
+    <xacro:pivot_link prefix="left_ankle" rpy="${pi/2.0} 0 0" />
 
     <link name="right_leg_link">
         <visual>
@@ -94,18 +94,20 @@
         <origin xyz="0 0 ${leg_lenght+foot_height+1.5*pivot_radius}" rpy="0 0 0"/>
     </joint>
 
-    <joint name="right_hip_joint" type="continuous">
+    <joint name="right_hip_joint" type="revolute">
         <parent link="base_link" />
         <child link="right_hip_link" />
         <origin xyz="${torso_length/2} 0 0" rpy="0 0 0"/>
         <axis xyz="-1 0 0" />
+        <limit lower="${-pi/2.0}" upper="${pi/2.0}" velocity="100" effort="100" />
     </joint>
 
-    <joint name="left_hip_joint" type="continuous">
+    <joint name="left_hip_joint" type="revolute">
         <parent link="base_link" />
         <child link="left_hip_link" />
         <origin xyz="${-torso_length/2} 0 0" rpy="0 0 0"/>
         <axis xyz="-1 0 0" />
+        <limit lower="${-pi/2.0}" upper="${pi/2.0}" velocity="100" effort="100" />
     </joint>
 
     <joint name="right_leg_joint" type="fixed">
@@ -120,18 +122,20 @@
         <origin xyz="0 0 -${pivot_radius}" rpy="0 0 0"/>
     </joint>
 
-    <joint name="right_ankle_joint" type="continuous">
+    <joint name="right_ankle_joint" type="revolute">
         <parent link="right_leg_link" />
         <child link="right_ankle_link" />
         <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0"/>
         <axis xyz="0 1 0" />
+        <limit lower="-0.8" upper="0.8" velocity="100" effort="100" />
     </joint>
 
-    <joint name="left_ankle_joint" type="continuous">
+    <joint name="left_ankle_joint" type="revolute">
         <parent link="left_leg_link" />
         <child link="left_ankle_link" />
         <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0"/>
         <axis xyz="0 -1 0" />
+        <limit lower="-0.8" upper="0.8" velocity="100" effort="100" />
     </joint>
 
     <joint name="right_foot_joint" type="fixed">
