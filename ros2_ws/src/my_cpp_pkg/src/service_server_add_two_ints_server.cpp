@@ -25,7 +25,7 @@ private:
     {
         response->sum = request->a + request->b;
         RCLCPP_INFO(
-            this->get_logger(), "%d + %d = %d", request->a,
+            this->get_logger(), "%ld + %ld = %ld", request->a,
             request->b, response->sum);
     }
 };
