@@ -13,9 +13,9 @@
         <inertial>
             <origin xyz="${xyz}" rpy="${rpy}" />
             <mass value="${mass}" />
-            <inertia ixx="${(mass/12) * (height*height + lenght*lenght)}" ixy="0" ixz="0"
-                     iyy="${(mass/12) * (width*width + lenght*lenght)}" iyz="0"
-                     izz="${(mass/12) * (width*width + height*height)}" />
+            <inertia ixx="${(mass/12) * (width*width + height*height)}" ixy="0" ixz="0"
+                     iyy="${(mass/12) * (lenght*lenght + height*height)}" iyz="0"
+                     izz="${(mass/12) * (lenght*lenght + width*width)}" />
         </inertial>
     </xacro:macro>
 
