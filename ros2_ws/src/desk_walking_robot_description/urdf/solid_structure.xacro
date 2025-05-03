@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+<!-- Xacro allows to use macros and properties to generate URDF files -->
+
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:property name="torso_height" value="1" />
