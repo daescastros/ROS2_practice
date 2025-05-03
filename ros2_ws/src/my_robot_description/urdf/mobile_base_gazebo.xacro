@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- topics naming can be changed to avoid using my_robot naming.
+        Check plugins documentation -->
 
     <gazebo reference="caster_wheel_link">
         <mu1 value="0.1" />
@@ -12,8 +14,10 @@
             name="gz::sim::systems::DiffDrive">
             <left_joint>base_left_wheel_joint</left_joint>
             <right_joint>base_right_wheel_joint</right_joint>
+            <!-- Wheel separation is between joints. ¿Should those be in the middle of the wheel? -->
             <wheel_separation>0.45</wheel_separation>
             <wheel_radius>0.1</wheel_radius>
+            <!-- odom is a standard keyword -->
             <frame_id>odom</frame_id>
             <child_frame_id>base_footprint</child_frame_id>
         </plugin>
