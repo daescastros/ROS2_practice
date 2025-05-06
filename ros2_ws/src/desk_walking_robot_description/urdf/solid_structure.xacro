@@ -18,7 +18,7 @@
 	
     <link name="base_footprint" />
 
-    <link name="base_link">
+    <link name="torso_link">
         <visual>
             <geometry>
                 <box size="${torso_length} ${torso_width} ${torso_height}" />
@@ -132,12 +132,12 @@
 
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
-        <child link="base_link" />
+        <child link="torso_link" />
         <origin xyz="0 0 ${leg_lenght+foot_height+1.5*pivot_radius}" rpy="0 0 0"/>
     </joint>
 
     <joint name="right_hip_joint" type="revolute">
-        <parent link="base_link" />
+        <parent link="torso_link" />
         <child link="right_hip_link" />
         <origin xyz="${torso_length/2} 0 0" rpy="0 0 0"/>
         <axis xyz="0 0 1" />
@@ -145,7 +145,7 @@
     </joint>
 
     <joint name="left_hip_joint" type="revolute">
-        <parent link="base_link" />
+        <parent link="torso_link" />
         <child link="left_hip_link" />
         <origin xyz="${-torso_length/2} 0 0" rpy="0 0 0"/>
         <axis xyz="0 0 -1" />
