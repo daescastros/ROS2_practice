@@ -18,14 +18,14 @@
                 <box size="${camera_length} ${camera_width} ${camera_height}"/>
             </geometry>
         </collision>
-        <xacro:box_inertia mass="1.0" lenght="${camera_length}" width="${camera_width}" height="${camera_height}"
+        <xacro:box_inertia mass="0.1" lenght="${camera_length}" width="${camera_width}" height="${camera_height}"
                            xyz="0 0 0" rpy="0 0 0" />
     </link>
 
     <joint name="camera_torso_joint" type="fixed">
         <parent link="torso_link"/>
         <child link="camera_link"/>
-        <origin xyz="0 ${torso_width / 2} ${torso_height / 2}" rpy="0 0 ${pi/2}"/>
+        <origin xyz="0 ${(torso_width + camera_length) / 2} ${torso_height / 2}" rpy="0 0 ${pi/2}"/>
     </joint>
 
 </robot>
