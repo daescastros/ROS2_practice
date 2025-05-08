@@ -7,15 +7,15 @@
     <xacro:property name="torso_length" value="${0.7 * torso_height}" />
     <xacro:property name="torso_width" value="${0.5 * torso_height}" />
     <xacro:property name="pivot_radius" value="${0.05 * torso_height}" />
-	<xacro:property name="pivot_length" value="${torso_width/8}" />
+    <xacro:property name="pivot_length" value="${torso_width/8}" />
     <xacro:property name="leg_lenght" value="${torso_height / 2}" />
     <xacro:property name="leg_hip_offset" value="${-(leg_lenght / 2)}" />
     <xacro:property name="leg_ankle_offset" value="${-leg_lenght-pivot_radius*0.5}" />
     <xacro:property name="foot_height" value="${pivot_radius*1.25}" />
     <xacro:property name="foot_ankle_offset" value="${pivot_radius-(foot_height/2)}" />
-    
-	<!-- for wheels collisions use spheres instead of cylinders -->
-	
+
+    <!-- for wheels collisions use spheres instead of cylinders -->
+
     <link name="base_footprint" />
 
     <link name="torso_link">
@@ -26,14 +26,14 @@
             <origin xyz="0 0 ${torso_height / 2.0}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
-		<collision>
+        <collision>
             <geometry>
                 <box size="${torso_length} ${torso_width} ${torso_height}" />
             </geometry>
             <origin xyz="0 0 ${torso_height / 2.0}" rpy="0 0 0" />
         </collision>
-		<xacro:box_inertia mass="5.0" height="${torso_height}" lenght="${torso_length}" width="${torso_width}"
-                           xyz="0 0 ${torso_height / 2.0}" rpy="0 0 0" />
+        <xacro:box_inertia mass="5.0" height="${torso_height}" lenght="${torso_length}"
+            width="${torso_width}" xyz="0 0 ${torso_height / 2.0}" rpy="0 0 0" />
     </link>
 
     <xacro:macro name="pivot_link" params="prefix xyz rpy">
@@ -61,13 +61,14 @@
             <origin xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
-		<collision>
+        <collision>
             <geometry>
                 <cylinder radius="${torso_length*0.2}" length="${leg_lenght}" />
             </geometry>
             <origin xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
         </collision>
-		<xacro:cylinder_inertia mass="2.0" radius="${torso_length*0.2}" height="${leg_lenght}" xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
+        <xacro:cylinder_inertia mass="2.0" radius="${torso_length*0.2}" height="${leg_lenght}"
+            xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
     </link>
 
     <link name="left_leg_link">
@@ -78,13 +79,14 @@
             <origin xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
-		<collision>
+        <collision>
             <geometry>
                 <cylinder radius="${torso_length*0.2}" length="${leg_lenght}" />
             </geometry>
             <origin xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
         </collision>
-		<xacro:cylinder_inertia mass="2.0" radius="${torso_length*0.2}" height="${leg_lenght}" xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
+        <xacro:cylinder_inertia mass="2.0" radius="${torso_length*0.2}" height="${leg_lenght}"
+            xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
     </link>
 
     <link name="right_foot_link">
@@ -95,14 +97,14 @@
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
-		<collision>
+        <collision>
             <geometry>
                 <box size="${torso_length*0.5/0.7} ${torso_width*1.1} ${foot_height}" />
             </geometry>
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
         </collision>
-		<xacro:box_inertia mass="1.0" lenght="${torso_length*0.5/0.7}" width="${torso_width*1.1}" height="${foot_height}"
-                           xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
+        <xacro:box_inertia mass="1.0" lenght="${torso_length*0.5/0.7}" width="${torso_width*1.1}"
+            height="${foot_height}" xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
     </link>
 
     <link name="left_foot_link">
@@ -113,33 +115,27 @@
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
-		<collision>
+        <collision>
             <geometry>
                 <box size="${torso_length*0.5/0.7} ${torso_width*1.1} ${foot_height}" />
             </geometry>
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
         </collision>
-		<xacro:box_inertia mass="1.0" lenght="${torso_length*0.5/0.7}" width="${torso_width*1.1}" height="${foot_height}"
-                           xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
+        <xacro:box_inertia mass="1.0" lenght="${torso_length*0.5/0.7}" width="${torso_width*1.1}"
+            height="${foot_height}" xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
     </link>
-
-
-
-
-
-
 
 
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
         <child link="torso_link" />
-        <origin xyz="0 0 ${leg_lenght+foot_height+1.5*pivot_radius}" rpy="0 0 0"/>
+        <origin xyz="0 0 ${leg_lenght+foot_height+1.5*pivot_radius}" rpy="0 0 0" />
     </joint>
 
     <joint name="right_hip_joint" type="revolute">
         <parent link="torso_link" />
         <child link="right_hip_link" />
-        <origin xyz="${torso_length/2} 0 0" rpy="0 0 0"/>
+        <origin xyz="${torso_length/2} 0 0" rpy="0 0 0" />
         <axis xyz="0 0 1" />
         <limit lower="${-pi/2.0}" upper="${pi/2.0}" velocity="100" effort="100" />
     </joint>
@@ -147,7 +143,7 @@
     <joint name="left_hip_joint" type="revolute">
         <parent link="torso_link" />
         <child link="left_hip_link" />
-        <origin xyz="${-torso_length/2} 0 0" rpy="0 0 0"/>
+        <origin xyz="${-torso_length/2} 0 0" rpy="0 0 0" />
         <axis xyz="0 0 -1" />
         <limit lower="${-pi/2.0}" upper="${pi/2.0}" velocity="100" effort="100" />
     </joint>
@@ -155,19 +151,19 @@
     <joint name="right_leg_joint" type="fixed">
         <parent link="right_hip_link" />
         <child link="right_leg_link" />
-        <origin xyz="0 0 -${pivot_length}" rpy="0 0 0"/>
+        <origin xyz="0 0 -${pivot_length}" rpy="0 0 0" />
     </joint>
 
     <joint name="left_leg_joint" type="fixed">
         <parent link="left_hip_link" />
         <child link="left_leg_link" />
-        <origin xyz="0 0 -${pivot_length}" rpy="0 0 0"/>
+        <origin xyz="0 0 -${pivot_length}" rpy="0 0 0" />
     </joint>
 
     <joint name="right_ankle_joint" type="revolute">
         <parent link="right_leg_link" />
         <child link="right_ankle_link" />
-        <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0"/>
+        <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-0.8" upper="0.8" velocity="100" effort="100" />
     </joint>
@@ -175,7 +171,7 @@
     <joint name="left_ankle_joint" type="revolute">
         <parent link="left_leg_link" />
         <child link="left_ankle_link" />
-        <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0"/>
+        <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-0.8" upper="0.8" velocity="100" effort="100" />
     </joint>
@@ -183,13 +179,13 @@
     <joint name="right_foot_joint" type="fixed">
         <parent link="right_ankle_link" />
         <child link="right_foot_link" />
-        <origin xyz="0 0 -${pivot_radius}" rpy="0 0 0"/>
+        <origin xyz="0 0 -${pivot_radius}" rpy="0 0 0" />
     </joint>
 
     <joint name="left_foot_joint" type="fixed">
         <parent link="left_ankle_link" />
         <child link="left_foot_link" />
-        <origin xyz="0 0 -${pivot_radius}" rpy="0 0 0"/>
+        <origin xyz="0 0 -${pivot_radius}" rpy="0 0 0" />
     </joint>
 
 </robot>

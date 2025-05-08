@@ -8,33 +8,34 @@
     <link name="camera_link">
         <visual>
             <geometry>
-                <box size="${camera_length} ${camera_width} ${camera_height}"/>
+                <box size="${camera_length} ${camera_width} ${camera_height}" />
             </geometry>
-            <material name="grey"/>
+            <material name="grey" />
             <!-- origin is 0 0 0 -->
         </visual>
         <collision>
             <geometry>
-                <box size="${camera_length} ${camera_width} ${camera_height}"/>
+                <box size="${camera_length} ${camera_width} ${camera_height}" />
             </geometry>
         </collision>
-        <xacro:box_inertia mass="0.1" lenght="${camera_length}" width="${camera_width}" height="${camera_height}"
-                           xyz="0 0 0" rpy="0 0 0" />
+        <xacro:box_inertia mass="0.1" lenght="${camera_length}" width="${camera_width}"
+            height="${camera_height}"
+            xyz="0 0 0" rpy="0 0 0" />
     </link>
 
     <joint name="camera_torso_joint" type="fixed">
-        <parent link="torso_link"/>
-        <child link="camera_link"/>
-        <origin xyz="0 ${(torso_width + camera_length) / 2} ${torso_height / 2}" rpy="0 0 ${pi/2}"/>
+        <parent link="torso_link" />
+        <child link="camera_link" />
+        <origin xyz="0 ${(torso_width + camera_length) / 2} ${torso_height / 2}" rpy="0 0 ${pi/2}" />
     </joint>
 
 
     <link name="camera_link_optical" />
 
     <joint name="camera_optical_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
-        <parent link="camera_link"/>
-        <child link="camera_link_optical"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+        <parent link="camera_link" />
+        <child link="camera_link_optical" />
     </joint>
 
     <gazebo reference="camera_link">
@@ -61,7 +62,7 @@
             <always_on>1</always_on>
             <update_rate>20</update_rate>
             <visualize>true</visualize>
-            <topic>camera/image_raw</topic>            
+            <topic>camera/image_raw</topic>
         </sensor>
     </gazebo>
 

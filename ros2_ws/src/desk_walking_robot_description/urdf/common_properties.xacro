@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    
+
     <material name="blue">
         <color rgba="0 0 0.5 1" />
     </material>
@@ -14,8 +14,8 @@
             <origin xyz="${xyz}" rpy="${rpy}" />
             <mass value="${mass}" />
             <inertia ixx="${(mass/12) * (width*width + height*height)}" ixy="0" ixz="0"
-                     iyy="${(mass/12) * (lenght*lenght + height*height)}" iyz="0"
-                     izz="${(mass/12) * (lenght*lenght + width*width)}" />
+                iyy="${(mass/12) * (lenght*lenght + height*height)}" iyz="0"
+                izz="${(mass/12) * (lenght*lenght + width*width)}" />
         </inertial>
     </xacro:macro>
 
@@ -24,8 +24,8 @@
             <origin xyz="${xyz}" rpy="${rpy}" />
             <mass value="${mass}" />
             <inertia ixx="${(mass/12) * (3*radius*radius + height*height)}" ixy="0" ixz="0"
-                     iyy="${(mass/12) * (3*radius*radius + height*height)}" iyz="0"
-                     izz="${(mass/2) * (radius*radius)}" />
+                iyy="${(mass/12) * (3*radius*radius + height*height)}" iyz="0"
+                izz="${(mass/2) * (radius*radius)}" />
         </inertial>
     </xacro:macro>
 
@@ -34,8 +34,8 @@
             <origin xyz="${xyz}" rpy="${rpy}" />
             <mass value="${mass}" />
             <inertia ixx="${(2/5) * mass * radius * radius}" ixy="0" ixz="0"
-                     iyy="${(2/5) * mass * radius * radius}" iyz="0"
-                     izz="${(2/5) * mass * radius * radius}" />
+                iyy="${(2/5) * mass * radius * radius}" iyz="0"
+                izz="${(2/5) * mass * radius * radius}" />
         </inertial>
     </xacro:macro>
 
