@@ -8,4 +8,10 @@
     <xacro:include filename="arm.xacro" />
     <xacro:include filename="arm_gazebo.xacro" />
 
+    <joint name="base_to_arm" type="fixed">
+        <origin xyz="0 0 ${base_height}" rpy="0 0 ${pi/2}"/>
+        <parent link="base_link"/>
+        <child link="arm_footprint"/>
+    </joint>
+
 </robot>
