@@ -2,12 +2,19 @@
 <!-- This file adds additional configurations to use with Gazebo plugins -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     
-    <!-- <gazebo reference="caster_wheel_link"> -->
+    <gazebo reference="left_foot_link">
         <!-- Friction parameters for the caster wheel -->
         <!-- avoids the wheel to slide get stuck -->
-    <!--    <mu1 value="0.1" />
+       <mu1 value="0.1" />
         <mu2 value="0.1" />
-    </gazebo> -->
+    </gazebo>
+
+    <gazebo reference="right_foot_link">
+        <!-- Friction parameters for the caster wheel -->
+        <!-- avoids the wheel to slide get stuck -->
+       <mu1 value="0.1" />
+        <mu2 value="0.1" />
+    </gazebo>
 
     <gazebo>
         <plugin 
@@ -26,16 +33,22 @@
             name="gz::sim::systems::JointPositionController">
             <joint_name>right_hip_joint</joint_name>
         </plugin>
+    </gazebo>
+    <gazebo>
         <plugin
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
             <joint_name>left_hip_joint</joint_name>
         </plugin>
+    </gazebo>
+    <gazebo>
         <plugin
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
             <joint_name>right_ankle_joint</joint_name>
         </plugin>
+    </gazebo>
+    <gazebo>
         <plugin
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
