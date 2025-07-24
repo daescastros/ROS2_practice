@@ -32,6 +32,7 @@
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
             <joint_name>right_hip_joint</joint_name>
+            <p_gain>15.0</p_gain>
         </plugin>
     </gazebo>
     <gazebo>
@@ -39,6 +40,7 @@
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
             <joint_name>left_hip_joint</joint_name>
+            <p_gain>15.0</p_gain>
         </plugin>
     </gazebo>
     <gazebo>
@@ -46,6 +48,7 @@
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
             <joint_name>right_ankle_joint</joint_name>
+            <p_gain>15.0</p_gain>
         </plugin>
     </gazebo>
     <gazebo>
@@ -53,6 +56,7 @@
             filename="gz-sim-joint-position-controller-system"
             name="gz::sim::systems::JointPositionController">
             <joint_name>left_ankle_joint</joint_name>
+            <p_gain>15.0</p_gain>
         </plugin>
     </gazebo>
 

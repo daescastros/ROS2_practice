@@ -7,5 +7,4 @@
     <!-- Comment  below line if using non-gazebo-plugins version -->
     <xacro:include filename="solid_structure_gazebo.xacro" />
     <xacro:include filename="camera.xacro" />
-
 </robot>

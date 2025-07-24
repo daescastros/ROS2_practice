@@ -3,7 +3,7 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="torso_height" value="1" />
+    <xacro:property name="torso_height" value="0.4" />
     <xacro:property name="torso_length" value="${0.7 * torso_height}" />
     <xacro:property name="torso_width" value="${0.5 * torso_height}" />
     <xacro:property name="pivot_radius" value="${0.05 * torso_height}" />
@@ -32,7 +32,7 @@
             </geometry>
             <origin xyz="0 0 ${torso_height / 2.0}" rpy="0 0 0" />
         </collision>
-        <xacro:box_inertia mass="5.0" height="${torso_height}" lenght="${torso_length}"
+        <xacro:box_inertia mass="2.0" height="${torso_height}" lenght="${torso_length}"
             width="${torso_width}" xyz="0 0 ${torso_height / 2.0}" rpy="0 0 0" />
     </link>
 
@@ -67,7 +67,7 @@
             </geometry>
             <origin xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
         </collision>
-        <xacro:cylinder_inertia mass="2.0" radius="${torso_length*0.2}" height="${leg_lenght}"
+        <xacro:cylinder_inertia mass="1.0" radius="${torso_length*0.2}" height="${leg_lenght}"
             xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
     </link>
 
@@ -85,21 +85,21 @@
             </geometry>
             <origin xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
         </collision>
-        <xacro:cylinder_inertia mass="2.0" radius="${torso_length*0.2}" height="${leg_lenght}"
+        <xacro:cylinder_inertia mass="1.0" radius="${torso_length*0.2}" height="${leg_lenght}"
             xyz="0 0 ${leg_hip_offset}" rpy="0 0 0" />
     </link>
 
     <link name="right_foot_link">
         <visual>
             <geometry>
-                <box size="${torso_length*0.5/0.7} ${torso_width*1.1} ${foot_height}" />
+                <box size="${torso_length*0.5/0.6} ${torso_width*1.3} ${foot_height}" />
             </geometry>
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
         <collision>
             <geometry>
-                <box size="${torso_length*0.5/0.7} ${torso_width*1.1} ${foot_height}" />
+                <box size="${torso_length*0.5/0.6} ${torso_width*1.3} ${foot_height}" />
             </geometry>
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
         </collision>
@@ -110,14 +110,14 @@
     <link name="left_foot_link">
         <visual>
             <geometry>
-                <box size="${torso_length*0.5/0.7} ${torso_width*1.1} ${foot_height}" />
+                <box size="${torso_length*0.5/0.6} ${torso_width*1.3} ${foot_height}" />
             </geometry>
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
             <material name="blue" />
         </visual>
         <collision>
             <geometry>
-                <box size="${torso_length*0.5/0.7} ${torso_width*1.1} ${foot_height}" />
+                <box size="${torso_length*0.5/0.6} ${torso_width*1.3} ${foot_height}" />
             </geometry>
             <origin xyz="0 0 ${foot_ankle_offset}" rpy="0 0 0" />
         </collision>
@@ -138,6 +138,7 @@
         <origin xyz="${torso_length/2} 0 0" rpy="0 0 0" />
         <axis xyz="0 0 1" />
         <limit lower="${-pi/2.0}" upper="${pi/2.0}" velocity="100" effort="100" />
+        <dynamics damping="0.5" friction="0.3" />
     </joint>
 
     <joint name="left_hip_joint" type="revolute">
@@ -146,6 +147,7 @@
         <origin xyz="${-torso_length/2} 0 0" rpy="0 0 0" />
         <axis xyz="0 0 -1" />
         <limit lower="${-pi/2.0}" upper="${pi/2.0}" velocity="100" effort="100" />
+        <dynamics damping="0.5" friction="0.3" />
     </joint>
 
     <joint name="right_leg_joint" type="fixed">
@@ -166,6 +168,7 @@
         <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-0.8" upper="0.8" velocity="100" effort="100" />
+        <dynamics damping="0.5" friction="0.3" />
     </joint>
 
     <joint name="left_ankle_joint" type="revolute">
@@ -174,6 +177,7 @@
         <origin xyz="0 0 ${leg_ankle_offset}" rpy="0 0 0" />
         <axis xyz="0 -1 0" />
         <limit lower="-0.8" upper="0.8" velocity="100" effort="100" />
+        <dynamics damping="0.5" friction="0.3" />
     </joint>
 
     <joint name="right_foot_joint" type="fixed">
